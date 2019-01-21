@@ -5,20 +5,41 @@ void bubbleSort(int arr[], int n);
 void out(int arr[], int n);
 
 int quickSort(int arr[], int first, int end);
+int binary(int array[],int target,int length);
+
+
+int jumpFloor(int target);
+
+int moreThanHalf(int arr[]);
+
+
 
 int main() {
-    int a[] = {5,8,3,34,21,4,6};
-    int length = sizeof(a)/4;
-  //  bubbleSort(a,length);
-  quickSort(a,0,length-1);
+  //  int a[] = {5,8,3,34,21,4,6};
+  //  int length = sizeof(a)/4;
+   // bubbleSort(a,length);
+ // quickSort(a,0,length-1);
+
+    int array[]={1,2,3,4,5,6,7};
+    int length=sizeof (array)/4;
+    int target=5;
+    int result=	binary(array,target,length);
+    cout<<result<<endl;
+
+
+
+  //https://www.nowcoder.com/practice/8c82a5b80378478f9484d87d1c5f12a4?tpId=13&tqId=11161&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+   // jumpFloor(10);
+
+  //  https://www.nowcoder.com/practice/e8a1b01a2df14cb2b228b30ee6a92163?tpId=13&tqId=11181&tPage=2&rp=2&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
 }
 
 
 void bubbleSort(int arr[], int n)
 {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
+    for (int i = 0; i < n-1 ; i++) {
+        for (int j = 0; j < n - i-1 ; j++) {
             if (arr[j] > arr[j + 1]) {
                 int temp = arr[j];
                 arr[j] = arr[j + 1];
@@ -26,7 +47,8 @@ void bubbleSort(int arr[], int n)
             }
         }
     }
-    out(arr,n);
+    int arr2[]= {2,4};
+
 }
 
 
@@ -72,6 +94,25 @@ int quickSort(int arr[], int low, int high){
 
 }
 
+int binary(int array[],int target,int length){
+
+    int start=0;
+    int end=length-1;
+    while(start<=end){
+        int midpoint = (start+end)/2;
+        if(target<array[midpoint]){
+            end = midpoint-1;
+        }
+        if(target>array[midpoint]){
+            start = midpoint+1;
+        }
+        if(target == array[midpoint]){
+            return target;
+        }
+    }
+    return 0;
+}
+
 
 
 
@@ -83,5 +124,22 @@ void out(int arr[], int n){
         cout<<arr[i]<<"   ";
     }
     cout<<endl;
+
+}
+
+int jumpFloor(int target){
+    if(target == 1){
+        return 1;
+    }
+    if(target == 2){
+        return 2;
+    }
+    return jumpFloor(target-1)+jumpFloor(target-2);
+
+}
+
+int moreThanHalf(int arr[]){
+
+
 
 }
